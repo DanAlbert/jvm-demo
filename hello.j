@@ -14,7 +14,7 @@
     ; main() - prints out Hello World
     ;
     .method public static main([Ljava/lang/String;)V
-       .limit stack 3   ; up to two items can be pushed
+       .limit stack 5   ; up to two items can be pushed
 
        ; push System.out onto the stack
        getstatic java/lang/System/out Ljava/io/PrintStream;

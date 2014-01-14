@@ -1,10 +1,5 @@
 (use-modules (ice-9 format))
 
-(define test
-  '(if (< 2 3) (println "2 < 3") (println "2 > 3")))
-
-(define funcmap
-  '((< 
 (define (compile prog)
   (let* ((symbol (if (list? prog) (car prog) prog)))
 	(cond ((eq? symbol 'if) (compile-if prog))
@@ -25,5 +20,14 @@
   (display (format #f "ldc ~a " num))
   (newline))
 
-(compile '(+ (- 5 2) (* 3 4)))
-(newline)
+(define (gen-class-header class-name)
+  (begin
+	(display (string-append ".class public " class-name))(newline)
+	(display ".super java/lang/Object")(newline)))
+
+(define (gen-method name args type body)
+  (display "Unimplemented")(newline))
+
+(gen-class-header "Main")
+;(compile '(+ (- 5 2) (* 3 4)))
+;(newline)
