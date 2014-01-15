@@ -22,6 +22,16 @@ tramp
 # elpa packages
 /elpa/
 
+# Clojure
+pom.xml
+*jar
+/lib/
+/classes/
+/target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+
 # Java junk
 *.class
 
