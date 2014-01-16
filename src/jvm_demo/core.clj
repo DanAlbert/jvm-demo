@@ -27,9 +27,7 @@
      (number? prog) (format "ldc %d" prog)
      :else (throw (Exception. (format "Unhandled literal: %s" (str prog)))))))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
+(defn -main [& args]
   (println
    (gen-cls
     :name "Main"
