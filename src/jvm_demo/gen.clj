@@ -5,14 +5,14 @@
 (defn- calc-stack-size [body]
   10)
 
-(defn- join-lines [& lines]
+(defn join-lines [& lines]
   (join "\n" lines))
 
 (defn gen-class-initializer [super]
   (join-lines
    ".method public <init>()V"
    "aload_0"
-   (str "invokeonvirtual " super "/<init>()V")
+   (str "invokenonvirtual " super "/<init>()V")
    "return"
    ".end method"))
 
@@ -21,7 +21,7 @@
    (join " " [".class public" name])
    (join " " [".super" super])))
 
-(defn gen-class [& {:keys [name super contents]
+(defn gen-cls [& {:keys [name super contents]
                     :or {super "java/lang/Object"
                          contents nil}}]
   (join-lines
@@ -31,8 +31,10 @@
 
 (defn gen-main [body]
   (join-lines
-   ".method public static Main([Ljava/lang/String;)V"
+   ".method public static main([Ljava/lang/String;)V"
    (join " " [".limit stack" (calc-stack-size body)])
    body
    "return"
    ".end method"))
+
+;(defn gen-math [op args]
